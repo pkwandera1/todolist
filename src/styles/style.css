@@ -28,9 +28,25 @@ body {
   border-right: 2px solid magenta;
 }
 
+#add-project-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0.3rem;
+  margin-top: 0;
+  user-select: none;
+}
+
+#add-project-btn:hover {
+  color: magenta;
+}
+
 .sidebar h2 {
   color: magenta;
-  margin-bottom: 1rem;
+  margin-bottom: 0;
+  text-align: center;
 }
 
 #project-list {
@@ -38,18 +54,23 @@ body {
   margin-bottom: 1rem;
 }
 
-#project-list li {
+#project-list .project-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: 0.5rem;
   cursor: pointer;
   border-radius: 5px;
   transition: background 0.2s;
+  background-color: #f182d56b;
+  margin: 5px 0 5px 0;
 }
 
-#project-list li:hover {
+#project-list .project-item:hover {
   background-color: #333;
 }
 
-#project-list li.active {
+#project-list .project-item.active {
   background-color: magenta;
   color: black;
   font-weight: bold;
@@ -63,14 +84,14 @@ body {
   margin-bottom: 0.5rem;
 }
 
-#add-project-btn {
+/*#add-project-btn {
   padding: 0.5rem;
   background-color: magenta;
   color: black;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-}
+}*/
 
 #add-project-btn:hover {
   background-color: #ff33cc;

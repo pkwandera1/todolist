@@ -5,7 +5,7 @@ import { renderApp } from './ui/domController';
 import { initEventListeners } from './ui/eventHandlers';
 import createProject from './app/project';
 
-
+document.addEventListener('DOMContentLoaded', () => {
 //Modal control
 const projectModal = document.getElementById('projectModal');
 const projectNameInput = document.getElementById('projectNameInput');
@@ -32,7 +32,7 @@ confirmAddProject.addEventListener('click', () => {
   renderApp();
 });
 
-document.addEventListener('DOMContentLoaded', () => {
+
   let projects = loadProjects();
   if (!projects || projects.length === 0) {
     const defaultProject = createProject('Default');

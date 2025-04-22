@@ -51,9 +51,25 @@ body {
   border-right: 2px solid magenta;
 }
 
+#add-project-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0.3rem;
+  margin-top: 0;
+  user-select: none;
+}
+
+#add-project-btn:hover {
+  color: magenta;
+}
+
 .sidebar h2 {
   color: magenta;
-  margin-bottom: 1rem;
+  margin-bottom: 0;
+  text-align: center;
 }
 
 #project-list {
@@ -61,18 +77,23 @@ body {
   margin-bottom: 1rem;
 }
 
-#project-list li {
+#project-list .project-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: 0.5rem;
   cursor: pointer;
   border-radius: 5px;
   transition: background 0.2s;
+  background-color: #f182d56b;
+  margin: 5px 0 5px 0;
 }
 
-#project-list li:hover {
+#project-list .project-item:hover {
   background-color: #333;
 }
 
-#project-list li.active {
+#project-list .project-item.active {
   background-color: magenta;
   color: black;
   font-weight: bold;
@@ -86,14 +107,14 @@ body {
   margin-bottom: 0.5rem;
 }
 
-#add-project-btn {
+/*#add-project-btn {
   padding: 0.5rem;
   background-color: magenta;
   color: black;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-}
+}*/
 
 #add-project-btn:hover {
   background-color: #ff33cc;
@@ -202,7 +223,7 @@ body {
 .hidden {
   display: none;
 }
-`, "",{"version":3,"sources":["webpack://./src/styles/style.css"],"names":[],"mappings":"AAAA,wBAAwB;AACxB;EACE,SAAS;EACT,UAAU;EACV,sBAAsB;AACxB;;AAEA;EACE,mCAAmC;EACnC,aAAa;EACb,aAAa;EACb,YAAY;EACZ,uBAAuB;AACzB;AACA;EACE,aAAa;AACf;AACA,YAAY;AACZ;EACE,YAAY;EACZ,sBAAsB;EACtB,YAAY;EACZ,aAAa;EACb,aAAa;EACb,sBAAsB;EACtB,2BAA2B;EAC3B,aAAa;EACb,+BAA+B;AACjC;;AAEA;EACE,cAAc;EACd,mBAAmB;AACrB;;AAEA;EACE,gBAAgB;EAChB,mBAAmB;AACrB;;AAEA;EACE,eAAe;EACf,eAAe;EACf,kBAAkB;EAClB,2BAA2B;AAC7B;;AAEA;EACE,sBAAsB;AACxB;;AAEA;EACE,yBAAyB;EACzB,YAAY;EACZ,iBAAiB;AACnB;;AAEA,kBAAkB;AAClB;EACE,eAAe;EACf,YAAY;EACZ,kBAAkB;EAClB,qBAAqB;AACvB;;AAEA;EACE,eAAe;EACf,yBAAyB;EACzB,YAAY;EACZ,YAAY;EACZ,kBAAkB;EAClB,eAAe;AACjB;;AAEA;EACE,yBAAyB;AAC3B;;AAEA,cAAc;AACd;EACE,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,YAAY;EACZ,gBAAgB;AAClB;;AAEA;EACE,WAAW;EACX,mBAAmB;AACrB;;AAEA,cAAc;AACd;EACE,aAAa;EACb,eAAe;EACf,SAAS;EACT,mBAAmB;AACrB;;AAEA;;;EAGE,eAAe;EACf,eAAe;AACjB;;AAEA;EACE,yBAAyB;EACzB,YAAY;EACZ,YAAY;EACZ,kBAAkB;EAClB,eAAe;AACjB;;AAEA;EACE,yBAAyB;AAC3B;;AAEA,eAAe;AACf;EACE,gBAAgB;AAClB;;AAEA;EACE,aAAa;EACb,oBAAoB;EACpB,qBAAqB;EACrB,kBAAkB;EAClB,gBAAgB;EAChB,yBAAyB;EACzB,YAAY;EACZ,qCAAqC;AACvC;;AAEA;EACE,UAAU;AACZ;;AAEA;EACE,eAAe;AACjB;;AAEA;EACE,kBAAkB;AACpB;;AAEA;EACE,iBAAiB;AACnB;;AAEA;EACE,gBAAgB;EAChB,YAAY;AACd;;AAEA;EACE,eAAe;EACf,MAAM;EACN,OAAO;EACP,WAAW;EACX,YAAY;EACZ,iCAAiC;EACjC,aAAa;EACb,mBAAmB;EACnB,uBAAuB;EACvB,WAAW;AACb;;AAEA;EACE,uBAAuB;EACvB,YAAY;EACZ,aAAa;EACb,kBAAkB;EAClB,gBAAgB;EAChB,4BAA4B;AAC9B;;AAEA;EACE,aAAa;AACf","sourcesContent":["/* Reset & Base Styles */\n* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n\nbody {\n  font-family: 'Segoe UI', sans-serif;\n  display: flex;\n  height: 100vh;\n  color: white;\n  background-color: black;\n}\n#app {\n  display: flex;\n}\n/* Sidebar */\n.sidebar {\n  width: 240px;\n  background-color: #111;\n  color: white;\n  padding: 1rem;\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  height: 100vh;\n  border-right: 2px solid magenta;\n}\n\n.sidebar h2 {\n  color: magenta;\n  margin-bottom: 1rem;\n}\n\n#project-list {\n  list-style: none;\n  margin-bottom: 1rem;\n}\n\n#project-list li {\n  padding: 0.5rem;\n  cursor: pointer;\n  border-radius: 5px;\n  transition: background 0.2s;\n}\n\n#project-list li:hover {\n  background-color: #333;\n}\n\n#project-list li.active {\n  background-color: magenta;\n  color: black;\n  font-weight: bold;\n}\n\n/* Project input */\n#new-project-name {\n  padding: 0.4rem;\n  border: none;\n  border-radius: 4px;\n  margin-bottom: 0.5rem;\n}\n\n#add-project-btn {\n  padding: 0.5rem;\n  background-color: magenta;\n  color: black;\n  border: none;\n  border-radius: 4px;\n  cursor: pointer;\n}\n\n#add-project-btn:hover {\n  background-color: #ff33cc;\n}\n\n/* Main Area */\n.main {\n  flex-grow: 1;\n  padding: 2rem;\n  background-color: white;\n  color: black;\n  overflow-y: auto;\n}\n\n.main h2 {\n  color: blue;\n  margin-bottom: 1rem;\n}\n\n/* Todo Form */\n#todo-form {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 1rem;\n  margin-bottom: 1rem;\n}\n\n#todo-form input,\n#todo-form select,\n#todo-form button {\n  padding: 0.5rem;\n  font-size: 1rem;\n}\n\n#todo-form button {\n  background-color: magenta;\n  color: black;\n  border: none;\n  border-radius: 4px;\n  cursor: pointer;\n}\n\n#todo-form button:hover {\n  background-color: #ff33cc;\n}\n\n/* Todo Items */\n#todo-list {\n  list-style: none;\n}\n\n.todo {\n  display: flex;\n  align-items: stretch;\n  margin-bottom: 0.5rem;\n  border-radius: 5px;\n  overflow: hidden;\n  background-color: #f2f2f2;\n  color: black;\n  box-shadow: 0 1px 3px rgba(0,0,0,0.2);\n}\n\n.left-border {\n  width: 6px;\n}\n\n.left-border.high {\n  background: red;\n}\n\n.left-border.medium {\n  background: orange;\n}\n\n.left-border.low {\n  background: green;\n}\n\n.todo-content {\n  padding: 0.75rem;\n  flex-grow: 1;\n}\n\n.modal {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-color: rgba(0,0,0,0.6);\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  z-index: 10;\n}\n\n.modal-content {\n  background-color: white;\n  color: black;\n  padding: 2rem;\n  border-radius: 8px;\n  min-width: 300px;\n  box-shadow: 0 0 15px magenta;\n}\n\n.hidden {\n  display: none;\n}\n"],"sourceRoot":""}]);
+`, "",{"version":3,"sources":["webpack://./src/styles/style.css"],"names":[],"mappings":"AAAA,wBAAwB;AACxB;EACE,SAAS;EACT,UAAU;EACV,sBAAsB;AACxB;;AAEA;EACE,mCAAmC;EACnC,aAAa;EACb,aAAa;EACb,YAAY;EACZ,uBAAuB;AACzB;AACA;EACE,aAAa;AACf;AACA,YAAY;AACZ;EACE,YAAY;EACZ,sBAAsB;EACtB,YAAY;EACZ,aAAa;EACb,aAAa;EACb,sBAAsB;EACtB,2BAA2B;EAC3B,aAAa;EACb,+BAA+B;AACjC;;AAEA;EACE,aAAa;EACb,uBAAuB;EACvB,mBAAmB;EACnB,eAAe;EACf,eAAe;EACf,eAAe;EACf,aAAa;EACb,iBAAiB;AACnB;;AAEA;EACE,cAAc;AAChB;;AAEA;EACE,cAAc;EACd,gBAAgB;EAChB,kBAAkB;AACpB;;AAEA;EACE,gBAAgB;EAChB,mBAAmB;AACrB;;AAEA;EACE,aAAa;EACb,mBAAmB;EACnB,8BAA8B;EAC9B,eAAe;EACf,eAAe;EACf,kBAAkB;EAClB,2BAA2B;EAC3B,2BAA2B;EAC3B,mBAAmB;AACrB;;AAEA;EACE,sBAAsB;AACxB;;AAEA;EACE,yBAAyB;EACzB,YAAY;EACZ,iBAAiB;AACnB;;AAEA,kBAAkB;AAClB;EACE,eAAe;EACf,YAAY;EACZ,kBAAkB;EAClB,qBAAqB;AACvB;;AAEA;;;;;;;EAOE;;AAEF;EACE,yBAAyB;AAC3B;;AAEA,cAAc;AACd;EACE,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,YAAY;EACZ,gBAAgB;AAClB;;AAEA;EACE,WAAW;EACX,mBAAmB;AACrB;;AAEA,cAAc;AACd;EACE,aAAa;EACb,eAAe;EACf,SAAS;EACT,mBAAmB;AACrB;;AAEA;;;EAGE,eAAe;EACf,eAAe;AACjB;;AAEA;EACE,yBAAyB;EACzB,YAAY;EACZ,YAAY;EACZ,kBAAkB;EAClB,eAAe;AACjB;;AAEA;EACE,yBAAyB;AAC3B;;AAEA,eAAe;AACf;EACE,gBAAgB;AAClB;;AAEA;EACE,aAAa;EACb,oBAAoB;EACpB,qBAAqB;EACrB,kBAAkB;EAClB,gBAAgB;EAChB,yBAAyB;EACzB,YAAY;EACZ,qCAAqC;AACvC;;AAEA;EACE,UAAU;AACZ;;AAEA;EACE,eAAe;AACjB;;AAEA;EACE,kBAAkB;AACpB;;AAEA;EACE,iBAAiB;AACnB;;AAEA;EACE,gBAAgB;EAChB,YAAY;AACd;;AAEA;EACE,eAAe;EACf,MAAM;EACN,OAAO;EACP,WAAW;EACX,YAAY;EACZ,iCAAiC;EACjC,aAAa;EACb,mBAAmB;EACnB,uBAAuB;EACvB,WAAW;AACb;;AAEA;EACE,uBAAuB;EACvB,YAAY;EACZ,aAAa;EACb,kBAAkB;EAClB,gBAAgB;EAChB,4BAA4B;AAC9B;;AAEA;EACE,aAAa;AACf","sourcesContent":["/* Reset & Base Styles */\n* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n\nbody {\n  font-family: 'Segoe UI', sans-serif;\n  display: flex;\n  height: 100vh;\n  color: white;\n  background-color: black;\n}\n#app {\n  display: flex;\n}\n/* Sidebar */\n.sidebar {\n  width: 240px;\n  background-color: #111;\n  color: white;\n  padding: 1rem;\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  height: 100vh;\n  border-right: 2px solid magenta;\n}\n\n#add-project-btn {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  font-size: 20px;\n  cursor: pointer;\n  padding: 0.3rem;\n  margin-top: 0;\n  user-select: none;\n}\n\n#add-project-btn:hover {\n  color: magenta;\n}\n\n.sidebar h2 {\n  color: magenta;\n  margin-bottom: 0;\n  text-align: center;\n}\n\n#project-list {\n  list-style: none;\n  margin-bottom: 1rem;\n}\n\n#project-list .project-item {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  padding: 0.5rem;\n  cursor: pointer;\n  border-radius: 5px;\n  transition: background 0.2s;\n  background-color: #f182d56b;\n  margin: 5px 0 5px 0;\n}\n\n#project-list .project-item:hover {\n  background-color: #333;\n}\n\n#project-list .project-item.active {\n  background-color: magenta;\n  color: black;\n  font-weight: bold;\n}\n\n/* Project input */\n#new-project-name {\n  padding: 0.4rem;\n  border: none;\n  border-radius: 4px;\n  margin-bottom: 0.5rem;\n}\n\n/*#add-project-btn {\n  padding: 0.5rem;\n  background-color: magenta;\n  color: black;\n  border: none;\n  border-radius: 4px;\n  cursor: pointer;\n}*/\n\n#add-project-btn:hover {\n  background-color: #ff33cc;\n}\n\n/* Main Area */\n.main {\n  flex-grow: 1;\n  padding: 2rem;\n  background-color: white;\n  color: black;\n  overflow-y: auto;\n}\n\n.main h2 {\n  color: blue;\n  margin-bottom: 1rem;\n}\n\n/* Todo Form */\n#todo-form {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 1rem;\n  margin-bottom: 1rem;\n}\n\n#todo-form input,\n#todo-form select,\n#todo-form button {\n  padding: 0.5rem;\n  font-size: 1rem;\n}\n\n#todo-form button {\n  background-color: magenta;\n  color: black;\n  border: none;\n  border-radius: 4px;\n  cursor: pointer;\n}\n\n#todo-form button:hover {\n  background-color: #ff33cc;\n}\n\n/* Todo Items */\n#todo-list {\n  list-style: none;\n}\n\n.todo {\n  display: flex;\n  align-items: stretch;\n  margin-bottom: 0.5rem;\n  border-radius: 5px;\n  overflow: hidden;\n  background-color: #f2f2f2;\n  color: black;\n  box-shadow: 0 1px 3px rgba(0,0,0,0.2);\n}\n\n.left-border {\n  width: 6px;\n}\n\n.left-border.high {\n  background: red;\n}\n\n.left-border.medium {\n  background: orange;\n}\n\n.left-border.low {\n  background: green;\n}\n\n.todo-content {\n  padding: 0.75rem;\n  flex-grow: 1;\n}\n\n.modal {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-color: rgba(0,0,0,0.6);\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  z-index: 10;\n}\n\n.modal-content {\n  background-color: white;\n  color: black;\n  padding: 2rem;\n  border-radius: 8px;\n  min-width: 300px;\n  box-shadow: 0 0 15px magenta;\n}\n\n.hidden {\n  display: none;\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -821,25 +842,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app_projectManager__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../app/projectManager */ "./src/app/projectManager.js");
 /* harmony import */ var _app_todoManager__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../app/todoManager */ "./src/app/todoManager.js");
 /* harmony import */ var _utils_helpers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/helpers */ "./src/utils/helpers.js");
+/* harmony import */ var _ui_eventHandlers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../ui/eventHandlers */ "./src/ui/eventHandlers.js");
 
 
 
+ // 👈 import event listener initializer
 
 const app = document.getElementById('app');
 
+
 function renderApp() {
   app.innerHTML = `
-    <aside class="sidebar">
+    <aside id="sidebar" class="sidebar">
       <h2>Projects</h2>
+      <div id="add-project-btn" title="Add Project">➕</div>
       <ul id="project-list"></ul>
-      <button id="add-project-btn">Add Project</button>
     </aside>
     <div class="main">
       <h2 id="project-title"></h2>
       <form id="todo-form">
         <input name="title" placeholder="Title" required />
         <input name="description" placeholder="Description" />
-        <input name="dueDate" type="date" />
+        <input name="dueDate" type="date" required />
         <select name="priority">
           <option value="high">High</option>
           <option value="medium">Medium</option>
@@ -850,29 +874,54 @@ function renderApp() {
       <ul id="todo-list"></ul>
     </div>
   `;
-  renderProjects();
-  const addProjectBtn = document.getElementById('add-project-btn');
-  if (addProjectBtn) {
-    addProjectBtn.addEventListener('click', () => {
-      projectModal.classList.remove('hidden');
-      projectNameInput.focus();
-    });
-  }
-  renderTodos();
-}
 
+  renderProjects();
+  renderTodos();
+
+  (0,_ui_eventHandlers__WEBPACK_IMPORTED_MODULE_3__.initEventListeners)(); // ✅ Attach listeners after everything is in place
+}
 function renderProjects() {
   const list = document.getElementById('project-list');
   list.innerHTML = '';
+
+  const projects = (0,_app_projectManager__WEBPACK_IMPORTED_MODULE_0__.getProjects)();
   const activeId = (0,_app_projectManager__WEBPACK_IMPORTED_MODULE_0__.getActiveProjectId)();
-  (0,_app_projectManager__WEBPACK_IMPORTED_MODULE_0__.getProjects)().forEach(project => {
-    const li = document.createElement('li');
-    li.textContent = project.name;
-    li.dataset.id = project.id;
-    if (project.id === activeId) li.classList.add('active');
-    list.appendChild(li);
+
+  projects.forEach(project => {
+    const projectItem = document.createElement('div');
+    projectItem.classList.add('project-item');
+    if (project.id === activeId) {
+      projectItem.classList.add('active');
+    }
+
+    const nameSpan = document.createElement('span');
+    nameSpan.textContent = project.name;
+    nameSpan.classList.add('project-name');
+    nameSpan.dataset.projectId = project.id;
+
+    const editBtn = document.createElement('button');
+    editBtn.textContent = '✏️';
+    editBtn.classList.add('edit-project-btn');
+    editBtn.dataset.projectId = project.id;
+
+    const deleteBtn = document.createElement('button');
+    deleteBtn.textContent = '🗑️';
+    deleteBtn.classList.add('delete-project-btn');
+    deleteBtn.dataset.projectId = project.id;
+
+    const buttonGroup = document.createElement('div');
+    buttonGroup.appendChild(editBtn);
+    buttonGroup.appendChild(deleteBtn);
+
+    projectItem.appendChild(nameSpan);
+    projectItem.appendChild(buttonGroup);
+
+
+    list.appendChild(projectItem);
   });
 }
+
+
 
 function renderTodos() {
   const project = (0,_app_projectManager__WEBPACK_IMPORTED_MODULE_0__.getProjectById)((0,_app_projectManager__WEBPACK_IMPORTED_MODULE_0__.getActiveProjectId)());
@@ -927,72 +976,122 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function initEventListeners() {
-  document.getElementById('add-project-btn').addEventListener('click', () => {
-    const name = document.getElementById('projectNameInput').value.trim();
-    if (name) {
-      const project = (0,_app_project__WEBPACK_IMPORTED_MODULE_4__["default"])(name);
-      (0,_app_projectManager__WEBPACK_IMPORTED_MODULE_0__.addProject)(project);
-      (0,_app_projectManager__WEBPACK_IMPORTED_MODULE_0__.setActiveProjectId)(project.id);
+  const addProjectBtn = document.getElementById('add-project-btn');
+  if (addProjectBtn) {
+    addProjectBtn.addEventListener('click', () => {
+      const projectModal = document.getElementById('projectModal');
+      const projectNameInput = document.getElementById('projectNameInput');
+      if (projectModal && projectNameInput) {
+        projectModal.classList.remove('hidden');
+        projectNameInput.focus();
+      }
+    });
+  }
+
+  const projectList = document.getElementById('project-list');
+  if (projectList) {
+    projectList.addEventListener('click', (e) => {
+      const target = e.target.closest('[data-project-id]');
+      if (
+        target &&
+        !e.target.classList.contains('edit-project-btn') &&
+        !e.target.classList.contains('delete-project-btn')
+      ) {
+        const id = target.dataset.projectId;
+        (0,_app_projectManager__WEBPACK_IMPORTED_MODULE_0__.setActiveProjectId)(id);
+        (0,_domController__WEBPACK_IMPORTED_MODULE_3__.renderProjects)();
+        (0,_domController__WEBPACK_IMPORTED_MODULE_3__.renderTodos)();
+      }
+    });
+  }
+  
+
+  const todoForm = document.getElementById('todo-form');
+  if (todoForm) {
+    todoForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const data = new FormData(e.target);
+      const todo = (0,_app_todo__WEBPACK_IMPORTED_MODULE_5__["default"])(
+        data.get('title'),
+        data.get('description'),
+        data.get('dueDate'),
+        data.get('priority')
+      );
+      (0,_app_todoManager__WEBPACK_IMPORTED_MODULE_1__.addTodo)((0,_app_projectManager__WEBPACK_IMPORTED_MODULE_0__.getActiveProjectId)(), todo);
       (0,_storage_localStorage__WEBPACK_IMPORTED_MODULE_2__.saveProjects)((0,_app_projectManager__WEBPACK_IMPORTED_MODULE_0__.getProjects)());
-      (0,_domController__WEBPACK_IMPORTED_MODULE_3__.renderProjects)();
       (0,_domController__WEBPACK_IMPORTED_MODULE_3__.renderTodos)();
-    }
-  });
-
-  document.getElementById('project-list').addEventListener('click', (e) => {
-    const id = e.target.dataset.id;
-    if (id) {
-      (0,_app_projectManager__WEBPACK_IMPORTED_MODULE_0__.setActiveProjectId)(id);
-      (0,_domController__WEBPACK_IMPORTED_MODULE_3__.renderProjects)();
-      (0,_domController__WEBPACK_IMPORTED_MODULE_3__.renderTodos)();
-    }
-  });
-
-  document.getElementById('todo-form').addEventListener('submit', (e) => {
-    e.preventDefault();
-    const data = new FormData(e.target);
-    const todo = (0,_app_todo__WEBPACK_IMPORTED_MODULE_5__["default"])(
-      data.get('title'),
-      data.get('description'),
-      data.get('dueDate'),
-      data.get('priority')
-    );
-    (0,_app_todoManager__WEBPACK_IMPORTED_MODULE_1__.addTodo)((0,_app_projectManager__WEBPACK_IMPORTED_MODULE_0__.getActiveProjectId)(), todo);
-    (0,_storage_localStorage__WEBPACK_IMPORTED_MODULE_2__.saveProjects)((0,_app_projectManager__WEBPACK_IMPORTED_MODULE_0__.getProjects)());
-    (0,_domController__WEBPACK_IMPORTED_MODULE_3__.renderTodos)();
-    e.target.reset();
-  });
+      e.target.reset();
+    });
+  }
 
   // Drag and Drop
   let dragged;
+  const todoList = document.getElementById('todo-list');
+  if (todoList) {
+    todoList.addEventListener('dragstart', (e) => {
+      dragged = e.target;
+    });
 
-  document.getElementById('todo-list').addEventListener('dragstart', (e) => {
-    dragged = e.target;
-  });
+    todoList.addEventListener('dragover', (e) => {
+      e.preventDefault();
+    });
 
-  document.getElementById('todo-list').addEventListener('dragover', (e) => {
-    e.preventDefault();
-  });
+    todoList.addEventListener('drop', (e) => {
+      e.preventDefault();
+      if (e.target.closest('li') && dragged) {
+        const list = [...document.querySelectorAll('#todo-list li')];
+        const draggedIndex = list.indexOf(dragged);
+        const targetIndex = list.indexOf(e.target.closest('li'));
 
-  document.getElementById('todo-list').addEventListener('drop', (e) => {
-    e.preventDefault();
-    if (e.target.closest('li') && dragged) {
-      const list = [...document.querySelectorAll('#todo-list li')];
-      const draggedIndex = list.indexOf(dragged);
-      const targetIndex = list.indexOf(e.target.closest('li'));
+        const todos = (0,_app_projectManager__WEBPACK_IMPORTED_MODULE_0__.getProjects)()
+          .find(p => p.id === (0,_app_projectManager__WEBPACK_IMPORTED_MODULE_0__.getActiveProjectId)())
+          .todos.slice();
 
-      const todos = (0,_app_projectManager__WEBPACK_IMPORTED_MODULE_0__.getProjects)()
-        .find(p => p.id === (0,_app_projectManager__WEBPACK_IMPORTED_MODULE_0__.getActiveProjectId)())
-        .todos.slice();
+        const [moved] = todos.splice(draggedIndex, 1);
+        todos.splice(targetIndex, 0, moved);
 
-      const [moved] = todos.splice(draggedIndex, 1);
-      todos.splice(targetIndex, 0, moved);
+        (0,_app_todoManager__WEBPACK_IMPORTED_MODULE_1__.reorderTodos)((0,_app_projectManager__WEBPACK_IMPORTED_MODULE_0__.getActiveProjectId)(), todos);
+        (0,_storage_localStorage__WEBPACK_IMPORTED_MODULE_2__.saveProjects)((0,_app_projectManager__WEBPACK_IMPORTED_MODULE_0__.getProjects)());
+        (0,_domController__WEBPACK_IMPORTED_MODULE_3__.renderTodos)();
+      }
+    });
+  }
 
-      (0,_app_todoManager__WEBPACK_IMPORTED_MODULE_1__.reorderTodos)((0,_app_projectManager__WEBPACK_IMPORTED_MODULE_0__.getActiveProjectId)(), todos);
-      (0,_storage_localStorage__WEBPACK_IMPORTED_MODULE_2__.saveProjects)((0,_app_projectManager__WEBPACK_IMPORTED_MODULE_0__.getProjects)());
-      (0,_domController__WEBPACK_IMPORTED_MODULE_3__.renderTodos)();
-    }
-  });
+  const sidebar = document.getElementById('sidebar');
+  if (sidebar) {
+    sidebar.addEventListener('click', (e) => {
+      const projectId = e.target.dataset.projectId;
+
+      if (e.target.classList.contains('edit-project-btn')) {
+        const newName = prompt('Enter new project name:');
+        if (newName) {
+          const project = (0,_app_projectManager__WEBPACK_IMPORTED_MODULE_0__.getProjectById)(projectId);
+          if (project) {
+            project.name = newName;
+            (0,_storage_localStorage__WEBPACK_IMPORTED_MODULE_2__.saveProjects)((0,_app_projectManager__WEBPACK_IMPORTED_MODULE_0__.getProjects)());
+            (0,_domController__WEBPACK_IMPORTED_MODULE_3__.renderApp)();
+          }
+        }
+      }
+
+      if (e.target.classList.contains('delete-project-btn')) {
+        const confirmDelete = confirm('Are you sure you want to delete this project?');
+        if (confirmDelete) {
+          (0,_app_projectManager__WEBPACK_IMPORTED_MODULE_0__.removeProject)(projectId);
+          const remaining = (0,_app_projectManager__WEBPACK_IMPORTED_MODULE_0__.getProjects)();
+          if (remaining.length > 0) {
+            (0,_app_projectManager__WEBPACK_IMPORTED_MODULE_0__.setActiveProjectId)(remaining[0].id);
+          } else {
+            const defaultProject = (0,_app_project__WEBPACK_IMPORTED_MODULE_4__["default"])('Default');
+            (0,_app_projectManager__WEBPACK_IMPORTED_MODULE_0__.addProject)(defaultProject);
+            (0,_app_projectManager__WEBPACK_IMPORTED_MODULE_0__.setActiveProjectId)(defaultProject.id);
+          }
+          (0,_storage_localStorage__WEBPACK_IMPORTED_MODULE_2__.saveProjects)((0,_app_projectManager__WEBPACK_IMPORTED_MODULE_0__.getProjects)());
+          (0,_domController__WEBPACK_IMPORTED_MODULE_3__.renderApp)();
+        }
+      }
+    });
+  }
 }
 
 
@@ -1114,7 +1213,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
+document.addEventListener('DOMContentLoaded', () => {
 //Modal control
 const projectModal = document.getElementById('projectModal');
 const projectNameInput = document.getElementById('projectNameInput');
@@ -1141,7 +1240,7 @@ confirmAddProject.addEventListener('click', () => {
   (0,_ui_domController__WEBPACK_IMPORTED_MODULE_3__.renderApp)();
 });
 
-document.addEventListener('DOMContentLoaded', () => {
+
   let projects = (0,_storage_localStorage__WEBPACK_IMPORTED_MODULE_1__.loadProjects)();
   if (!projects || projects.length === 0) {
     const defaultProject = (0,_app_project__WEBPACK_IMPORTED_MODULE_5__["default"])('Default');
